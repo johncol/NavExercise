@@ -6,6 +6,7 @@ var app = express();
 
 app.use(logger('dev'));
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'data')));
 app.use('/api', api);
 
 module.exports = app;
