@@ -14,3 +14,7 @@
   font-weight: normal;
   src: url("/fonts/GalaxieCopernicus-BookItalic.eot?#iefix") format("embedded-opentype"), url("/fonts/GalaxieCopernicus-BookItalic.woff") format("woff"), url("/fonts/GalaxieCopernicus-BookItalic.svg#svgFontName") format("svg");
 }
+@font-face {
+  font-family: 'HelveticaNeue';
+  src: url("/fonts/helvetica-neue-webfont.eot?#iefix") format("embedded-opentype"), url("/fonts/helvetica-neue-webfont.woff") format("woff"), url("/fonts/helvetica-neue-webfont.ttf") format("truetype"), url("/fonts/helvetica-neue-webfont.svg#svgFontName") format("svg");
+}
