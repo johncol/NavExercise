@@ -1,18 +1,61 @@
 @import "fonts.css";
+@import "main-nav.css";
 
-body {
-  background: #ec008c;
-  color: #fff;
+#main-logo {
+  float: left;
+  cursor: default;
+  font: 25px/72px 'HUGEAvantGardeBold';
+  color: #FFF;
+  height: 72px;
+  width: 132px;
+  text-align: center;
+  background: #EC008C url(../images/HUGE-white-logo.png) no-repeat 24px 24px;
+  background-size: 60px 24px;
+  text-indent: -9999px;
 }
 
-h1 {
+#content {
+  position: relative;
+}
+
+.translucent-mask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 50;
+  background: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  height: 100%;
+  display: none;
+}
+
+#main-content {
+  height: 640px;
+  background: url(../images/background-image.jpg);
+  position: relative;
+}
+
+#main-content h1 {
+  color: #FFF;
+  font: 120px/132px 'HUGEAvantGardeBold';
+  text-align: center;
   position: absolute;
   top: 50%;
   left: 50%;
-  -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
-  margin: 0;
-  font: 20vmin/1 HUGEAvantGardeBold;
-  letter-spacing: -0.06em;
-  text-align: center;
+  cursor: default;
+}
+
+#introduction {
+  padding: 60px 0;
+  width: 968px;
+  margin: 0 auto;
+}
+
+#introduction * {
+  font: 24px/36px 'Galaxie';
+}
+
+#introduction p {
+  text-align: justify;
 }
