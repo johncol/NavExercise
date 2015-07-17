@@ -5,7 +5,7 @@
 	var translucentMaskClass = 'translucent-mask';
 
 	/**
-	 * Returns navigation items from navItemsJSON json file if the promise completes succesfully
+	 * Returns navigation items
 	 * @return {Promise[Array]}
 	 */
 	var loadNavigationItems = function () {
@@ -31,6 +31,10 @@
 		}
 	};
 
+	/**
+	 * Shows/hiddes the translucent mask given the visible parameter value
+	 * @param  {boolean} visible
+	 */
 	var toggleTranslucentMask = function (visible) {
 		document.getElementsByClassName(translucentMaskClass)[0].style.display = visible ? 'block' : 'none';
 	};

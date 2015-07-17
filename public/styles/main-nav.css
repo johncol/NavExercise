@@ -7,7 +7,16 @@
  * Translucent Black rgba(0, 0, 0, 0.5)
  */
 
-/* primary nav */
+
+/* ------ HEADER ------ */
+
+header {
+  background: #EC008C;
+  display: block;
+  height: 72px;
+}
+
+/* ------ PRIMARY NAV ------ */
 
 nav#main-nav {
   background: #EC008C;
@@ -40,25 +49,8 @@ nav#main-nav ul li a.active-menu-item {
   color: #EC008C;
 }
 
-@media screen and (min-width: 768px) {
+/* ------ SECONDARY NAV ------ */
 
-  nav#main-nav {
-    margin-left: 132px;
-    min-width: 816px;
-    height: 72px;
-  }
-
-  nav#main-nav ul li {
-    /*display: inline-block;*/
-    float: left;
-  }
-
-}
-
-nav#main-nav ul li {
-}
-
-/* secondary nav */
 nav#main-nav ul li ul {
   display: none;
   position: absolute;
@@ -90,12 +82,26 @@ nav#main-nav ul li a.active-menu-item + ul {
   display: block;
 }
 
+/* ------ PRIMARY NAV 768px++ RESOLUTIONS ------ */
 
+@media screen and (min-width: 768px) {
 
-/*
+  nav#main-nav {
+    margin-left: 132px;
+    min-width: 816px;
+  }
+
+  nav#main-nav ul li {
+    float: left;
+  }
+
+}
+
+/* ------ PRIMARY NAV 768px-- RESOLUTIONS ------ */
 @media screen and (max-width: 767px) {
 
   nav#main-nav {
+    display: none;
     max-width: 300px;
   }
 
@@ -104,4 +110,3 @@ nav#main-nav ul li a.active-menu-item + ul {
   }
 
 }
-*/
