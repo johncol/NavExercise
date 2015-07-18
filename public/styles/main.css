@@ -1,72 +1,324 @@
+
 @import "fonts.css";
-@import "main-nav.css";
+
+/**
+ * COLORS:
+ * Magenta #EC008C
+ * White #FFF
+ * Light Gray #EEE
+ * Translucent Black rgba(0, 0, 0, 0.5)
+ */
+
+/**
+ *
+ * INDEX:
+ *  1 LOGO
+ *  2 PRIMARY NAV
+ *  3 SECONDARY NAV
+ *  4 CONTENT
+ *  5 ILUSTRATION
+ *  6 MAIN CONTENT
+ *  7 INTRODUCTION
+ */
+
+/* ----------------------------- LOGO ----------------------------- */
 
 #main-logo {
-  float: left;
-  cursor: default;
-  font: 25px/72px 'HUGEAvantGardeBold';
-  color: #FFF;
-  height: 72px;
-  width: 132px;
-  text-align: center;
-  background: #EC008C url(../images/HUGE-white-logo.png) no-repeat 24px 24px;
-  background-size: 60px 24px;
-  text-indent: -9999px;
+    float: left;
+    height: 72px;
+    width: 132px;
+    color: #FFF;
+    text-align: center;
+    background: #EC008C url(../images/HUGE-white-logo.png) no-repeat 24px 24px;
+    cursor: default;
+    font: 25px/72px 'HUGEAvantGardeBold';
+    background-size: 60px 24px;
+    text-indent: -9999px;
 }
 
+#main-logo button {
+    display: none;
+}
+
+@media (max-width: 767px) {
+
+    #main-logo {
+        float: none;
+        height: 60px;
+        width: 100%;
+        color: transparent;
+        text-align: left;
+        background: #EC008C;
+        position: relative;
+    }
+
+    #main-logo button {
+        display: block;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        color: transparent;
+        background: #EC008C url(../images/hamburguer.png) no-repeat 0 0;
+        overflow: hidden;
+        width: 24px;
+        height: 20px;
+        position: absolute;
+        top: 20px;
+        left: 24px;
+    }
+
+    #main-logo.with-menu-visible {
+        background: #EC008C url(../images/HUGE-white-logo.png) no-repeat 24px 20px;
+        background-size: 50px 20px;
+    }
+
+    #main-logo.with-menu-visible button {
+        background: #EC008C url(../images/x-button.png) no-repeat 0 0;
+        width: 24px;
+        height: 24px;
+        left: auto;
+        top: 18px;
+        right: 24px;
+    }
+
+}
+
+/* ----------------------------- PRIMARY NAV ----------------------------- */
+
+nav#main-nav ul li a {
+    display: block;
+    text-decoration: none;
+    cursor: pointer;
+    padding: 0 24px;
+    background: #EC008C;
+    color: #FFF;
+    font: 21px/72px 'HUGEAvantGardeBold';
+    height: 72px;
+    text-align: center;
+}
+
+nav#main-nav ul li a:hover,
+nav#main-nav ul li a.active-menu-item {
+    background: #FFF;
+    color: #EC008C;
+}
+
+@media (min-width: 768px) {
+
+    nav#main-nav {
+        background: #EC008C;
+        height: 72px;
+        margin-left: 132px;
+        min-width: 816px;
+    }
+
+    nav#main-nav ul li {
+        float: left;
+    }
+
+}
+
+@media (max-width: 767px) {
+
+    nav#main-nav {
+        background: #FFF;
+        width: 300px;
+        margin-left: -300px;
+        float: left;
+    }
+
+    nav#main-nav ul li {
+        z-index: 10;
+    }
+
+    nav#main-nav.with-menu-visible {
+        margin-left: 0;
+    }
+
+    nav#main-nav ul li:first-child {
+        background: #FFF;
+        padding-top: 12px;
+    }
+
+    nav#main-nav ul li a {
+        padding: 0;
+        padding-left: 24px;
+        background: #FFF;
+        color: #000;
+        font: 21px/48px 'HUGEAvantGardeBold';
+        height: 48px;
+        text-align: left;
+    }
+
+    nav#main-nav ul li.with-children a {
+        background: #FFF url(../images/down-icon.png) no-repeat 252px 0;
+    }
+
+    nav#main-nav ul li a:hover {
+        color: inherit;
+        background-color: #EEE;
+    }
+
+}
+
+/* ----------------------------- SECONDARY NAV ----------------------------- */
+
+nav#main-nav ul li ul {
+    display: none;
+    position: absolute;
+    min-width: 230px;
+    z-index: 100;
+}
+
+nav#main-nav ul li ul li {
+    display: block;
+    float: none;
+}
+
+nav#main-nav ul li ul li a {
+    font: 16px/48px 'Galaxie';
+    height: 48px;
+    text-align: left;
+    color: #000;
+    background: #FFF;
+}
+
+nav#main-nav ul li ul li a:hover {
+    background: #EEE;
+    color: #EC008C;
+}
+
+nav#main-nav ul li a.active-menu-item + ul {
+    display: block;
+}
+
+/* ----------------------------- CONTENT ----------------------------- */
+
 #content {
-  position: relative;
+    position: relative;
+}
+
+@media (max-width: 767px) {
+    
+    #main-nav.with-menu-visible + #content {
+        margin-left: 300px;
+    }
+
 }
 
 .translucent-mask {
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 50;
-  background: rgba(0, 0, 0, 0.5);
-  width: 100%;
-  height: 100%;
-  display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 50;
+    background: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    height: 100%;
+    display: none;
 }
+
+/* ----------------------------- ILUSTRATION ----------------------------- */
 
 #ilustration {
-  height: 640px;
-  overflow: hidden;
+    overflow: hidden;
 }
 
-#ilustration img {
-  width: 100%;
-  min-width: 1280px;
-  min-height: 640px;
+@media (min-width: 767px) {
+
+    #ilustration {
+        height: 640px;
+    }
+
+    #ilustration img {
+        width: 100%;
+        min-width: 1280px;
+        min-height: 640px;
+    }
+
 }
+
+@media (max-width: 767px) {
+    
+    #ilustration {
+        height: 240px;
+    }
+
+    #ilustration img {
+        min-width: 80%;
+        min-height: 50%;
+    }
+
+}
+
+/* ----------------------------- MAIN CONTENT ----------------------------- */
 
 #main-content {
-  height: 640px;
-  margin-top: -640px;
-  position: relative;
+    position: relative;
 }
 
 #main-content h1 {
-  color: #FFF;
-  font: 120px/132px 'HUGEAvantGardeBold';
-  text-align: center;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  cursor: default;
+    color: #FFF;
+    font: 120px/132px 'HUGEAvantGardeBold';
 }
 
+@media (min-width: 768px) {
+
+    #main-content {
+        height: 640px;
+        margin-top: -640px;
+    }
+
+    #main-content h1 {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        cursor: default;
+        text-align: center;
+    }
+
+}
+
+@media (max-width: 767px) {
+    
+    #main-content {
+        height: auto;
+        margin: 50px 0;
+        padding-left: 24px;
+    }
+
+    #main-content h1 {
+        color: #000;
+        font: 44px/48px 'HUGEAvantGardeBold';
+    }
+
+}
+
+/* ----------------------------- INTRODUCTION ----------------------------- */
+
 #introduction {
-  padding: 60px 0;
-  max-width: 968px;
-  margin: 0 auto;
+    padding: 60px 0;
+    margin: 0 auto;
+    max-width: 968px;
 }
 
 #introduction * {
-  font: 24px/36px 'Galaxie';
+    font: 24px/36px 'Galaxie';
 }
 
 #introduction p {
-  text-align: justify;
+    text-align: justify;
+}
+
+@media (max-width: 767px) {
+    
+    #introduction {
+        padding: 0 24px;
+        margin-bottom: 20px;
+    }
+
+    #introduction * {
+        font: 14px/24px 'Galaxie';
+    }
+
 }

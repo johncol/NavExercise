@@ -1,8 +1,26 @@
 (function () {
 
-	var navigationElementID = 'main-nav';
-	var clickedItemClass = 'active-menu-item';
-	var translucentMaskClass = 'translucent-mask';
+	/**
+	 * index IDs
+	 */
+	var navigationElementID = 'main-nav',
+		logoID = 'main-logo';
+
+	/**
+	 * index classes
+	 */
+	var clickedItemClass = 'active-menu-item',
+		translucentMaskClass = 'translucent-mask',
+		menuDisplayClass = 'with-menu-visible',
+		itemWithSubitemsClass = 'with-children';
+
+	/**
+	 * index elements
+	 */
+	var navigation = document.getElementById(navigationElementID),
+		navigationList = document.getElementById(navigationElementID).children[0],
+		navigationButton = document.getElementById(logoID).children[1],
+		translucentMask = document.getElementsByClassName(translucentMaskClass)[0];
 
 	/**
 	 * Returns navigation items
@@ -14,18 +32,10 @@
 	};
 
 	/**
-	 * Returns DOM unordered list element for the main navigation
-	 * @return {List Element}
-	 */
-	var getNavigationListElement = function () {
-		return document.getElementById(navigationElementID).children[0];
-	};
-
-	/**
 	 * Looks for all the primary menu items, and removes the active class
 	 */
 	var removeActiveItemClassFromAllItems = function () {
-		var listItems = getNavigationListElement().children;
+		var listItems = navigationList.children;
 		for (var i = 0; i < listItems.length; i++) {
 			listItems[i].children[0].classList.remove(clickedItemClass);
 		}
@@ -36,7 +46,7 @@
 	 * @param  {boolean} visible
 	 */
 	var toggleTranslucentMask = function (visible) {
-		document.getElementsByClassName(translucentMaskClass)[0].style.display = visible ? 'block' : 'none';
+		translucentMask.style.display = visible ? 'block' : 'none';
 	};
 
 	/**
@@ -84,6 +94,7 @@
 		item.appendChild(anchor);
 		item.addEventListener('click', toggleClickedItemClass);
 		if (itemData.items && itemData.items.length > 0) {
+			item.classList.add(itemWithSubitemsClass);
 			addInnerList(item, itemData.items);
 		} else {
 			anchor.href = itemData.url;
@@ -98,8 +109,12 @@
 		}
 	});
 
+	navigationButton.addEventListener('click', function (event) {
+		event.target.parentNode.classList.toggle(menuDisplayClass);
+		navigation.classList.toggle(menuDisplayClass);
+	});
+
 	loadNavigationItems().then(function (navigationItems) {
-		var navigationList = getNavigationListElement();
 		addItemsToNavigationList(navigationList, navigationItems);
 	});
 
