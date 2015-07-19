@@ -4,7 +4,9 @@
 	 * index IDs
 	 */
 	var navigationElementID = 'main-nav',
-		logoID = 'main-logo';
+		logoID = 'main-logo',
+		footerID = 'main-footer',
+		contentID = 'content';
 
 	/**
 	 * index classes
@@ -12,6 +14,7 @@
 	var clickedItemClass = 'active-menu-item',
 		translucentMaskClass = 'translucent-mask',
 		menuDisplayClass = 'with-menu-visible',
+		prefixInnerListsClass = 'inner-list-',
 		itemWithSubitemsClass = 'with-children';
 
 	/**
@@ -20,7 +23,14 @@
 	var navigation = document.getElementById(navigationElementID),
 		navigationList = document.getElementById(navigationElementID).children[0],
 		navigationButton = document.getElementById(logoID).children[1],
+		content = document.getElementById(contentID),
+		footer = document.getElementById(footerID),
 		translucentMask = document.getElementsByClassName(translucentMaskClass)[0];
+
+	/**
+	 * Resolution limit in pixels
+	 */
+	var resolutionLimit = 768;
 
 	/**
 	 * Returns navigation items
@@ -51,12 +61,30 @@
 
 	/**
 	 * Removes all active classes from menu items and adds it to the one that was clicked
+	 * and shows/hides the translucent mask
 	 * @param  {Event} Click Event
 	 */
 	var toggleClickedItemClass = function (event) {
-		removeActiveItemClassFromAllItems();
-		event.target.classList.add(clickedItemClass);
-		toggleTranslucentMask(event.target.nextSibling != null);
+		var item = event.target;
+		var highResolution = window.innerWidth >= resolutionLimit;
+		var clickedItemWasActiveAlready = item.classList.contains(clickedItemClass);
+		if (clickedItemWasActiveAlready) {
+			item.classList.remove(clickedItemClass);
+			if (highResolution) {
+				toggleTranslucentMask(false);
+			}
+		} else {
+			var itemHasSubitems = item.nextSibling != null;
+			removeActiveItemClassFromAllItems();
+			if (itemHasSubitems) {
+				item.classList.add(clickedItemClass);
+			}
+			if (highResolution) {
+				toggleTranslucentMask(itemHasSubitems);
+			} else {
+				toggleTranslucentMask(true);
+			}
+		}
 	};
 
 	/**
@@ -77,6 +105,7 @@
 	 */
 	var addInnerList = function (listContainer, items) {
 		var innerList = document.createElement('ul');
+		innerList.className = prefixInnerListsClass + items.length;
 		addItemsToNavigationList(innerList, items);
 		listContainer.appendChild(innerList);
 	};
@@ -92,7 +121,7 @@
 		var itemLabel = document.createTextNode(itemData.label);
 		anchor.appendChild(itemLabel);
 		item.appendChild(anchor);
-		item.addEventListener('click', toggleClickedItemClass);
+		item.onclick = toggleClickedItemClass;
 		if (itemData.items && itemData.items.length > 0) {
 			item.classList.add(itemWithSubitemsClass);
 			addInnerList(item, itemData.items);
@@ -102,17 +131,19 @@
 		listElement.appendChild(item);
 	};
 
-	document.body.addEventListener('click', function (event) {
-		if (event.target.nodeName != 'A') {
-			removeActiveItemClassFromAllItems();
-			toggleTranslucentMask(false);
-		}
-	});
+	translucentMask.onclick = function (event) {
+		removeActiveItemClassFromAllItems();
+		toggleTranslucentMask(false);
+		navigationButton.parentNode.classList.remove(menuDisplayClass);
+		navigation.classList.remove(menuDisplayClass);
+	};
 
-	navigationButton.addEventListener('click', function (event) {
+	navigationButton.onclick = function (event) {
 		event.target.parentNode.classList.toggle(menuDisplayClass);
 		navigation.classList.toggle(menuDisplayClass);
-	});
+		footer.classList.toggle(menuDisplayClass);
+		toggleTranslucentMask(navigation.classList.contains(menuDisplayClass));
+	};
 
 	loadNavigationItems().then(function (navigationItems) {
 		addItemsToNavigationList(navigationList, navigationItems);

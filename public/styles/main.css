@@ -19,6 +19,9 @@
  *  5 ILUSTRATION
  *  6 MAIN CONTENT
  *  7 INTRODUCTION
+ *  8 FOOTER
+ *  9 TRANSITIONS
+ *  10 Z-INDEX
  */
 
 /* ----------------------------- LOGO ----------------------------- */
@@ -43,13 +46,14 @@
 @media (max-width: 767px) {
 
     #main-logo {
-        float: none;
         height: 60px;
         width: 100%;
         color: transparent;
         text-align: left;
         background: #EC008C;
-        position: relative;
+        position: fixed;
+        top: 0;
+        left: 0;
     }
 
     #main-logo button {
@@ -122,17 +126,15 @@ nav#main-nav ul li a.active-menu-item {
 
     nav#main-nav {
         background: #FFF;
+        position: fixed;
         width: 300px;
-        margin-left: -300px;
-        float: left;
-    }
-
-    nav#main-nav ul li {
-        z-index: 10;
+        height: 100%;
+        left: -300px;
+        top: 60px;
     }
 
     nav#main-nav.with-menu-visible {
-        margin-left: 0;
+        left: 0;
     }
 
     nav#main-nav ul li:first-child {
@@ -150,12 +152,28 @@ nav#main-nav ul li a.active-menu-item {
         text-align: left;
     }
 
-    nav#main-nav ul li.with-children a {
-        background: #FFF url(../images/down-icon.png) no-repeat 252px 0;
+    nav#main-nav ul li.with-children>a {
+        background: #FFF;
+        position: relative;
+    }
+
+    nav#main-nav ul li.with-children>a::after {
+        content: url(../images/down-icon.png);
+        padding: 0;
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 48px;
+        height: 48px;
+    }
+
+    nav#main-nav ul li.with-children>a.active-menu-item::after {
+        transform: rotate(-180deg);
+        transform-origin: center center;
     }
 
     nav#main-nav ul li a:hover {
-        color: inherit;
+        color: #000;
         background-color: #EEE;
     }
 
@@ -164,10 +182,8 @@ nav#main-nav ul li a.active-menu-item {
 /* ----------------------------- SECONDARY NAV ----------------------------- */
 
 nav#main-nav ul li ul {
-    display: none;
-    position: absolute;
-    min-width: 230px;
-    z-index: 100;
+    overflow: hidden;
+    max-height: 0px;
 }
 
 nav#main-nav ul li ul li {
@@ -188,33 +204,109 @@ nav#main-nav ul li ul li a:hover {
     color: #EC008C;
 }
 
-nav#main-nav ul li a.active-menu-item + ul {
-    display: block;
+nav#main-nav ul li a.active-menu-item + ul.inner-list-1 {
+    max-height: 50px;
+}
+
+nav#main-nav ul li a.active-menu-item + ul.inner-list-2 {
+    max-height: 100px;
+}
+
+nav#main-nav ul li a.active-menu-item + ul.inner-list-3 {
+    max-height: 150px;
+}
+
+nav#main-nav ul li a.active-menu-item + ul.inner-list-4 {
+    max-height: 200px;
+}
+
+nav#main-nav ul li a.active-menu-item + ul.inner-list-5 {
+    max-height: 220px;
+}
+
+nav#main-nav ul li a.active-menu-item + ul.inner-list-6 {
+    max-height: 300px;
+}
+
+nav#main-nav ul li a.active-menu-item + ul.inner-list-7 {
+    max-height: 350px;
+}
+
+nav#main-nav ul li a.active-menu-item + ul.inner-list-8 {
+    max-height: 400px;
+}
+
+nav#main-nav ul li a.active-menu-item + ul.inner-list-9 {
+    max-height: 450px;
+}
+
+nav#main-nav ul li a.active-menu-item + ul.inner-list-10 {
+    max-height: 500px;
+}
+
+nav#main-nav ul li a.active-menu-item + ul.inner-list-11 {
+    max-height: 550px;
+}
+
+nav#main-nav ul li a.active-menu-item + ul.inner-list-12 {
+    max-height: 600px;
+}
+
+@media (min-width: 768px) {
+
+    nav#main-nav ul li ul {
+        position: absolute;
+        min-width: 230px;
+    }
+    
+}
+
+@media (max-width: 767px) {
+
+    nav#main-nav ul li a.active-menu-item {
+        color: #000;
+    }
+
+    nav#main-nav ul li.with-children ul li a {
+        background: transparent;
+    }
+
+    nav#main-nav ul li.with-children ul li a:hover {
+        background: #EEE;
+    }
+    
 }
 
 /* ----------------------------- CONTENT ----------------------------- */
 
-#content {
-    position: relative;
-}
-
 @media (max-width: 767px) {
     
-    #main-nav.with-menu-visible + #content {
-        margin-left: 300px;
+    #content {
+        margin-top: 60px;
     }
 
 }
 
 .translucent-mask {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
-    z-index: 50;
     background: rgba(0, 0, 0, 0.5);
     width: 100%;
     height: 100%;
     display: none;
+}
+
+@media (max-width: 767px) {
+    .translucent-mask {
+        top: 60px;
+    }
+}
+
+@media (min-width: 768px) {
+    .translucent-mask {
+        top: 72px;
+    }
 }
 
 /* ----------------------------- ILUSTRATION ----------------------------- */
@@ -243,32 +335,38 @@ nav#main-nav ul li a.active-menu-item + ul {
         height: 240px;
     }
 
+}
+
+@media (max-width: 480px) { /*432*/
+
     #ilustration img {
-        min-width: 80%;
-        min-height: 50%;
+        height: 240px;
+    }
+
+}
+
+@media (min-width: 481px) and (max-width: 767px) {
+
+    #ilustration img {
+        width: 100%;
+        min-height: 240px;
     }
 
 }
 
 /* ----------------------------- MAIN CONTENT ----------------------------- */
 
-#main-content {
-    position: relative;
-}
-
-#main-content h1 {
-    color: #FFF;
-    font: 120px/132px 'HUGEAvantGardeBold';
-}
-
 @media (min-width: 768px) {
 
     #main-content {
         height: 640px;
         margin-top: -640px;
+        position: relative;
     }
 
     #main-content h1 {
+        color: #FFF;
+        font: 120px/132px 'HUGEAvantGardeBold';
         position: absolute;
         top: 50%;
         left: 50%;
@@ -300,9 +398,6 @@ nav#main-nav ul li a.active-menu-item + ul {
     padding: 60px 0;
     margin: 0 auto;
     max-width: 968px;
-}
-
-#introduction * {
     font: 24px/36px 'Galaxie';
 }
 
@@ -314,11 +409,82 @@ nav#main-nav ul li a.active-menu-item + ul {
     
     #introduction {
         padding: 0 24px;
+        margin: 0;
         margin-bottom: 20px;
-    }
-
-    #introduction * {
         font: 14px/24px 'Galaxie';
     }
 
+}
+
+/* ----------------------------- FOOTER ----------------------------- */
+
+footer#main-footer {
+    font: 12px/48px 'HelveticaNeue', Helvetica Neue, Helvetica, Arial, sans-serif;
+    height: 48px;
+}
+
+@media (min-width: 768px) {
+    
+    footer#main-footer {
+        text-align: center;
+    }
+
+}
+
+@media (max-width: 767px) {
+
+    footer#main-footer {
+        display: block;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        padding-left: 24px;
+        left: -300px;
+        background: #FFF;
+    }
+
+    footer#main-footer.with-menu-visible {
+        left: 0px;
+    }
+
+}
+
+/* ----------------------------- TRANSITIONS ----------------------------- */
+
+@media (max-width: 767px) {
+
+    nav#main-nav, #content, footer#main-footer {
+        transition: all 1s;
+    }
+
+    nav#main-nav ul li ul {
+        transition: all 1s ;
+    }
+
+    nav#main-nav ul li.with-children>a::after {
+        transition: all .3s;
+    }
+
+}
+
+/* ----------------------------- Z-INDEX ----------------------------- */
+
+.translucent-mask {
+    z-index: 500;
+}
+
+#main-logo {
+    z-index: 1000;
+}
+
+nav#main-nav {
+    z-index: 600;
+}
+
+nav#main-nav ul li ul {
+    z-index: 1000;
+}
+
+footer#main-footer {
+    z-index: 1000;
 }
