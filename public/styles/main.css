@@ -43,7 +43,7 @@
     display: none;
 }
 
-@media (max-width: 767px) {
+@media all and (max-width: 767px) {
 
     #main-logo {
         height: 60px;
@@ -107,7 +107,7 @@ nav#main-nav ul li a.active-menu-item {
     color: #EC008C;
 }
 
-@media (min-width: 768px) {
+@media all and (min-width: 768px) {
 
     nav#main-nav {
         background: #EC008C;
@@ -122,7 +122,7 @@ nav#main-nav ul li a.active-menu-item {
 
 }
 
-@media (max-width: 767px) {
+@media all and (max-width: 767px) {
 
     nav#main-nav {
         background: #FFF;
@@ -252,7 +252,7 @@ nav#main-nav ul li a.active-menu-item + ul.inner-list-12 {
     max-height: 600px;
 }
 
-@media (min-width: 768px) {
+@media all and (min-width: 768px) {
 
     nav#main-nav ul li ul {
         position: absolute;
@@ -261,7 +261,7 @@ nav#main-nav ul li a.active-menu-item + ul.inner-list-12 {
     
 }
 
-@media (max-width: 767px) {
+@media all and (max-width: 767px) {
 
     nav#main-nav ul li a.active-menu-item {
         color: #000;
@@ -279,7 +279,7 @@ nav#main-nav ul li a.active-menu-item + ul.inner-list-12 {
 
 /* ----------------------------- CONTENT ----------------------------- */
 
-@media (max-width: 767px) {
+@media all and (max-width: 767px) {
     
     #content {
         margin-top: 60px;
@@ -297,13 +297,13 @@ nav#main-nav ul li a.active-menu-item + ul.inner-list-12 {
     display: none;
 }
 
-@media (max-width: 767px) {
+@media all and (max-width: 767px) {
     .translucent-mask {
         top: 60px;
     }
 }
 
-@media (min-width: 768px) {
+@media all and (min-width: 768px) {
     .translucent-mask {
         top: 72px;
     }
@@ -315,7 +315,7 @@ nav#main-nav ul li a.active-menu-item + ul.inner-list-12 {
     overflow: hidden;
 }
 
-@media (min-width: 767px) {
+@media all and (min-width: 767px) {
 
     #ilustration {
         height: 640px;
@@ -329,7 +329,7 @@ nav#main-nav ul li a.active-menu-item + ul.inner-list-12 {
 
 }
 
-@media (max-width: 767px) {
+@media all and (max-width: 767px) {
     
     #ilustration {
         height: 240px;
@@ -337,7 +337,7 @@ nav#main-nav ul li a.active-menu-item + ul.inner-list-12 {
 
 }
 
-@media (max-width: 480px) { /*432*/
+@media all and (max-width: 480px) { /*432*/
 
     #ilustration img {
         height: 240px;
@@ -345,7 +345,7 @@ nav#main-nav ul li a.active-menu-item + ul.inner-list-12 {
 
 }
 
-@media (min-width: 481px) and (max-width: 767px) {
+@media all and (min-width: 481px) and (max-width: 767px) {
 
     #ilustration img {
         width: 100%;
@@ -356,7 +356,7 @@ nav#main-nav ul li a.active-menu-item + ul.inner-list-12 {
 
 /* ----------------------------- MAIN CONTENT ----------------------------- */
 
-@media (min-width: 768px) {
+@media all and (min-width: 768px) {
 
     #main-content {
         height: 640px;
@@ -377,7 +377,7 @@ nav#main-nav ul li a.active-menu-item + ul.inner-list-12 {
 
 }
 
-@media (max-width: 767px) {
+@media all and (max-width: 767px) {
     
     #main-content {
         height: auto;
@@ -405,7 +405,7 @@ nav#main-nav ul li a.active-menu-item + ul.inner-list-12 {
     text-align: justify;
 }
 
-@media (max-width: 767px) {
+@media all and (max-width: 767px) {
     
     #introduction {
         padding: 0 24px;
@@ -423,7 +423,7 @@ footer#main-footer {
     height: 48px;
 }
 
-@media (min-width: 768px) {
+@media all and (min-width: 768px) {
     
     footer#main-footer {
         text-align: center;
@@ -431,7 +431,7 @@ footer#main-footer {
 
 }
 
-@media (max-width: 767px) {
+@media all and (max-width: 767px) {
 
     footer#main-footer {
         display: block;
@@ -451,7 +451,7 @@ footer#main-footer {
 
 /* ----------------------------- TRANSITIONS ----------------------------- */
 
-@media (max-width: 767px) {
+@media all and (max-width: 767px) {
 
     nav#main-nav, #content, footer#main-footer {
         transition: all 1s;

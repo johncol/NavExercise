@@ -4,9 +4,9 @@
  * NavigationItemsLoader
  * Loads navigation items from nav.json json file and saves the promise in itemsPromise
  */
-class NavigationItemsLoader {
+function NavigationItemsLoader() {
 
-	constructor() {
+	this.constructor = function () {
 		var navItemsJSON = '/api/nav.json';
 		this.itemsPromise = new Promise(function (resolve, reject) {
 			var request = new XMLHttpRequest();
@@ -22,6 +22,8 @@ class NavigationItemsLoader {
 			};
 			request.send(null);
 		});
-	}
+	};
+
+	this.constructor();
 
 };
